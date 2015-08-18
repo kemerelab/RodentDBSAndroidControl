@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="unspecified"><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftoolsutil/build/intermediates/exploded-aar/RSMControl/ndeftools/unspecified/assets"/></dataSet><dataSet config="debug"><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftoolsutil/build/intermediates/bundles/debug/assets"/></dataSet><dataSet config="main"><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftoolsutil/src/androidTest/assets"/></dataSet></merger>
