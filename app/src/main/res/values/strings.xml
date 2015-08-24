@@ -5,9 +5,9 @@
 
     <string name="nfcStatusString">NFC Status</string>
     <string name="deviceIDlabel">Device ID</string>
-    <string name="stimPeriodLabel">Stimulation period (µs)</string>
-    <string name="stimAmplitudeLabel">Stimulaton amplitude (µV)</string>
-    <string name="pulseWidthLabel">Pulse width (µs):</string>
+    <string name="stimFrequencyLabel">Stimulation frequency</string>
+    <string name="stimAmplitudeLabel">Stimulaton amplitude</string>
+    <string name="pulseWidthLabel">Pulse width</string>
     <string name="lastUpdateLabel">Last update</string>
     <string name="uptimeLabel">Device up-time</string>
     <string name="batteryVoltageLabel">Battery voltage</string>
@@ -46,16 +46,5 @@
 
     <string name="hello_world">Hello world!</string>
 
-    <string-array name="stimulationWidths">
-        <item>20</item>
-        <item>30</item>
-        <item>30</item>
-        <item>40</item>
-        <item>50</item>
-        <item>60</item>
-        <item>70</item>
-        <item>80</item>
-        <item>90</item>
-    </string-array>
 
 </resources>

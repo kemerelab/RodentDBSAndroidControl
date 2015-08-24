@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftools/src/main/res"/><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftools/build/generated/res/rs/release"/><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftools/build/generated/res/resValues/release"/></dataSet><dataSet config="release"><source path="/Users/ckemere/Development/AndroidStudio/RSMControl/ndeftools/src/release/res"/></dataSet><mergedItems/></merger>

@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -30,7 +31,6 @@ public class MainActivity extends NfcReaderActivity {
 
     static final String RSM_DEVICE_STRUCTURE = "rsmDevice";
     static final String NDEF_TEXT_TO_BE_WRITTEN = "NDEF_Text";
-
 
     RSMDevice rsmDevice;
 
@@ -56,6 +56,18 @@ public class MainActivity extends NfcReaderActivity {
         }
 
         setContentView(R.layout.activity_main);
+
+        NumberPicker np = (NumberPicker) findViewById(R.id.stimulationFrequencyPicker);
+        np.setMaxValue(200);
+        np.setMinValue(0);
+
+        np = (NumberPicker) findViewById(R.id.stimulationAmplitudePicker);
+        np.setMaxValue(100);
+        np.setMinValue(0);
+
+        np = (NumberPicker) findViewById(R.id.stimulationPulseWidthPicker);
+        np.setMaxValue(100);
+        np.setMinValue(30);
 
         updateStatus(nfcAvalability);
         updateDeviceDisplay();
@@ -142,34 +154,29 @@ public class MainActivity extends NfcReaderActivity {
             EditText t = (EditText) findViewById(R.id.deviceIDText);
             t.setInputType(InputType.TYPE_NULL);
 
-            t = (EditText) findViewById(R.id.stimulationPeriodText);
-            t.setInputType(InputType.TYPE_NULL);
+            NumberPicker np = (NumberPicker) findViewById(R.id.stimulationFrequencyPicker);
+            np.setEnabled(false);
 
-            t = (EditText) findViewById(R.id.stimulationAmplitudeText);
-            t.setInputType(InputType.TYPE_NULL);
+            np = (NumberPicker) findViewById(R.id.stimulationAmplitudePicker);
+            np.setEnabled(false);
 
-            t = (EditText) findViewById(R.id.stimulationWidthText);
-            t.setInputType(InputType.TYPE_NULL);
+            np = (NumberPicker) findViewById(R.id.stimulationPulseWidthPicker);
+            np.setEnabled(false);
 
-            Spinner sp  = (Spinner) findViewById(R.id.stimulationWidthSpinner);
-            sp.setEnabled(false);
         }
         else {
             s.setBackgroundColor(Color.WHITE);
             EditText t = (EditText) findViewById(R.id.deviceIDText);
             t.setInputType(InputType.TYPE_CLASS_TEXT);
 
-            t = (EditText) findViewById(R.id.stimulationPeriodText);
-            t.setInputType(InputType.TYPE_CLASS_NUMBER);
+            NumberPicker np = (NumberPicker) findViewById(R.id.stimulationFrequencyPicker);
+            np.setEnabled(true);
 
-            t = (EditText) findViewById(R.id.stimulationAmplitudeText);
-            t.setInputType(InputType.TYPE_CLASS_NUMBER);
+            np = (NumberPicker) findViewById(R.id.stimulationAmplitudePicker);
+            np.setEnabled(true);
 
-            t = (EditText) findViewById(R.id.stimulationWidthText);
-            t.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-            Spinner sp  = (Spinner) findViewById(R.id.stimulationWidthSpinner);
-            sp.setEnabled(true);
+            np = (NumberPicker) findViewById(R.id.stimulationPulseWidthPicker);
+            np.setEnabled(true);
         }
     }
 
@@ -177,14 +184,15 @@ public class MainActivity extends NfcReaderActivity {
         EditText t = (EditText) findViewById(R.id.deviceIDText);
         rsmDevice.deviceID = Integer.parseInt(t.getText().toString());
 
-        t = (EditText) findViewById(R.id.stimulationPeriodText);
-        rsmDevice.stimulationPeriod = Integer.parseInt(t.getText().toString());
+        NumberPicker np = (NumberPicker) findViewById(R.id.stimulationFrequencyPicker);
+        Integer period = 1000000 / np.getValue();
+        rsmDevice.stimulationPeriod = period;
 
-        t = (EditText) findViewById(R.id.stimulationAmplitudeText);
-        rsmDevice.stimulationAmplitude = Integer.parseInt(t.getText().toString());
+        np = (NumberPicker) findViewById(R.id.stimulationAmplitudePicker);
+        rsmDevice.stimulationAmplitude = np.getValue();
 
-        t = (EditText) findViewById(R.id.stimulationWidthText);
-        rsmDevice.stimulationWidth = Integer.parseInt(t.getText().toString());
+        np = (NumberPicker) findViewById(R.id.stimulationPulseWidthPicker);
+        rsmDevice.stimulationWidth = np.getValue();
     }
 
 
@@ -227,14 +235,15 @@ public class MainActivity extends NfcReaderActivity {
         if (t != null)
             t.setText(rsmDevice.deviceID.toString(), TextView.BufferType.EDITABLE);
 
-        t = (EditText) findViewById(R.id.stimulationPeriodText);
-        t.setText(rsmDevice.stimulationPeriod.toString(), TextView.BufferType.EDITABLE);
+        NumberPicker np = (NumberPicker) findViewById(R.id.stimulationFrequencyPicker);
+        Integer freq = 1000000 / rsmDevice.stimulationPeriod;
+        np.setValue(freq);
 
-        t = (EditText) findViewById(R.id.stimulationAmplitudeText);
-        t.setText(rsmDevice.stimulationAmplitude.toString(), TextView.BufferType.EDITABLE);
+        np = (NumberPicker) findViewById(R.id.stimulationAmplitudePicker);
+        np.setValue(rsmDevice.stimulationAmplitude);
 
-        t = (EditText) findViewById(R.id.stimulationWidthText);
-        t.setText(rsmDevice.stimulationWidth.toString(), TextView.BufferType.EDITABLE);
+        np = (NumberPicker) findViewById(R.id.stimulationPulseWidthPicker);
+        np.setValue(rsmDevice.stimulationWidth);
 
         TextView t2 = (TextView) findViewById(R.id.lastUpdateText);
         t2.setText(rsmDevice.getLastUpdateString(), TextView.BufferType.EDITABLE);
@@ -318,10 +327,8 @@ public class MainActivity extends NfcReaderActivity {
                 String text = ((TextRecord) record).getText();
                 RSMDevice device = new RSMDevice(text);
                 if (device.isValid == true) {
-                    //toast(getString(R.string.readRSMNDEFMessage));
-                    //rsmDevice = device;
-                    rsmDevice = new RSMDevice(text);
-                    toast("Tag: " + rsmDevice.deviceID.toString() + ", " + "stim width: " + rsmDevice.stimulationWidth.toString());
+                    toast(getString(R.string.readRSMNDEFMessage));
+                    rsmDevice = device;
                     updateDeviceDisplay();
                 }
                 else {

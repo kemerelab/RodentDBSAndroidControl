@@ -1,22 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:baselineAligned="false"
+    android:padding="10dp">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/statusTextView"
-        android:fillViewport="false"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="false">
+        android:fillViewport="false">
 
         <TextView
             android:layout_width="fill_parent"
@@ -38,151 +32,213 @@
             android:onClick="onProgramButtonClicked"
             android:layout_alignParentBottom="true"
             style="@style/TextAppearance.AppCompat.Medium.Inverse"
-            android:background="@color/DarkBlue"
-            android:singleLine="true"
-            android:padding="5dp" />
+            android:singleLine="false"
+            android:padding="10dp"
+            android:layout_marginTop="20dp" />
 
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editToggleSwitch"
+            android:layout_gravity="right"
+            android:onClick="onEditSwitchToggled"
+            android:textOff="Edit"
+            android:textOn="Lock"
+            android:layout_below="@+id/statusTextView"
+            android:layout_alignParentRight="true" />
 
         <ScrollView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="left"
             android:id="@+id/deviceView"
             android:layout_alignParentEnd="true"
-            android:layout_above="@+id/programButton"
-            android:layout_below="@+id/statusTextView">
+            android:layout_below="@+id/editToggleSwitch"
+            android:layout_above="@+id/programButton">
 
-            <RelativeLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editToggleSwitch"
-                    android:layout_gravity="right"
-                    android:layout_alignParentRight="true"
-                    android:onClick="onEditSwitchToggled"
-                    android:textOff="Edit"
-                    android:textOn="Lock" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:text="@string/deviceIDlabel"
-                    android:id="@+id/textView7" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/deviceIDText"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="right"
-                    android:inputType="none" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:text="@string/stimPeriodLabel"
-                    android:id="@+id/textView2" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:id="@+id/stimulationPeriodText" />
-
-                    <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:text="@string/stimAmplitudeLabel"
-                    android:id="@+id/textView8" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:id="@+id/stimulationAmplitudeText"
-                    android:gravity="right"
-                    android:layout_gravity="center_horizontal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:text="@string/pulseWidthLabel"
-                    android:id="@+id/textView4" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:id="@+id/stimulationWidthText"
-                    android:gravity="right"
-                    android:layout_gravity="center_horizontal" />
-
-                <Spinner
-                    style="@android:style/Widget.EditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/stimulationWidthSpinner"
-                    android:entries="@array/stimulationWidths"
-                    android:spinnerMode="dialog" />
-
-                <TextView
+            <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                android:text="@string/lastUpdateLabel"
-                android:id="@+id/textView9" />
+                android:stretchColumns="0,2"
+                android:measureWithLargestChild="true"
+                android:orientation="vertical">
 
-                <TextView
-                    style="@android:style/Widget.EditText"
+                <TableRow
+                    android:gravity="left"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lastUpdateText"
-                    android:inputType="none"
-                    android:gravity="right"
-                    android:textStyle="italic"
-                    android:editable="false" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:text="@string/uptimeLabel"
-                    android:id="@+id/textView5" />
+                    <TextView
+                        android:text="@string/deviceIDlabel"
+                        android:gravity="right"
+                        android:id="@+id/deviceIDCaption" />
 
-                <TextView
-                    style="@android:style/Widget.EditText"
+                    <EditText
+                        android:id="@+id/deviceIDText"
+                        android:gravity="right"
+                        android:inputType="none"
+                        android:layout_width="fill_parent"/>
+
+                    <TextView
+                        android:text="  "
+                        android:id="@+id/spaces1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/uptimeText"
-                    android:gravity="right"
-                    android:textStyle="italic"
-                    android:editable="false" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                    android:text="@string/batteryVoltageLabel"
-                    android:id="@+id/textView3" />
+                    <TextView
+                        android:text="@string/stimFrequencyLabel"
+                        android:gravity="right"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/stimFrequencyCaption" />
 
-                <TextView
-                    style="@android:style/Widget.EditText"
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/stimulationFrequencyPicker" />
+
+                    <TextView
+                        android:text="Hz"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/hzUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+
+
+
+                <TableRow
+                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/batteryVoltageText"
-                    android:gravity="right"
-                    android:textStyle="italic"
-                    android:editable="false" />
-            </RelativeLayout>
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/stimAmplitudeLabel"
+                        android:gravity="right"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/stimAmplitudeCaption" />
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/stimulationAmplitudePicker" />
+
+                    <TextView
+                        android:text="µV"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/microVoltUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/pulseWidthLabel"
+                        android:gravity="right"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/pulseWidthCaption" />
+
+                    <NumberPicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/stimulationPulseWidthPicker" />
+
+                    <TextView
+                        android:text="µs"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/microsecondUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/lastUpdateLabel"
+                        android:gravity="right"
+                        android:id="@+id/lastUpdateCaption" />
+
+                    <TextView
+                        style="@android:style/Widget.EditText"
+                        android:id="@+id/lastUpdateText"
+                        android:layout_width="wrap_content"
+                        android:inputType="none"
+                        android:gravity="right"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:text="s"
+                        android:id="@+id/secondUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/uptimeLabel"
+                        android:gravity="right"
+                        android:id="@+id/uptimeCaption" />
+
+                    <TextView
+                        style="@android:style/Widget.EditText"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/uptimeText"
+                        android:gravity="right"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:text="  "
+                        android:id="@+id/spaces2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/batteryVoltageLabel"
+                        android:gravity="right"
+                        android:id="@+id/batteryVoltageCaption" />
+
+                    <TextView
+                        style="@android:style/Widget.EditText"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/batteryVoltageText"
+                        android:gravity="right"
+                        android:textStyle="italic"/>
+
+                    <TextView
+                        android:text="mV"
+                        android:id="@+id/millivoltUnit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </TableRow>
+
+            </TableLayout>
         </ScrollView>
+
     </RelativeLayout>
 </LinearLayout>

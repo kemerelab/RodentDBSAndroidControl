@@ -32,7 +32,7 @@ public class RSMDevice implements Parcelable {
     public RSMDevice() {
         deviceID = 0;
         stimulationEnabled = 0;
-        stimulationPeriod = 0;
+        stimulationPeriod = 10000000;
         stimulationAmplitude = 0;
         stimulationWidth = 10;
         uptime = 0;
@@ -45,7 +45,7 @@ public class RSMDevice implements Parcelable {
     public RSMDevice(String recordString) {
         deviceID = 0;
         stimulationEnabled = 0;
-        stimulationPeriod = 0;
+        stimulationPeriod = 10000000;
         stimulationAmplitude = 0;
         stimulationWidth = 0;
         uptime = 0;
