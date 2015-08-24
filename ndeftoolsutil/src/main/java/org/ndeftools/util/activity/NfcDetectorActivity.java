@@ -21,7 +21,7 @@ package org.ndeftools.util.activity;
 
 import java.io.IOException;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -54,7 +54,7 @@ import android.util.Log;
  *
  */
 
-public abstract class NfcDetectorActivity extends Activity {
+public abstract class NfcDetectorActivity extends AppCompatActivity {
 	
 	/**
      * Broadcast Action: The state of the local NFC adapter has been

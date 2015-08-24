@@ -20,16 +20,42 @@
     <string name="nfcBeamAvailableDisabled">Beam disabled.</string>
     <string name="nfcBeamed">Message beamed.</string>
     <string name="noNfcMessage">NFC is not available.</string>
-    <string name="tagNotWritable">Tag is not writable.</string>
     <string name="nfcSettingEnabled">NFC enabled in settings.</string>
     <string name="nfcSettingDisabled">NFC disabled in settings.</string>
 
-    <string name="readSingleRecordNDEFMessage">Read single-record NDEF message.</string>
-    <string name="readMultipleRecordNDEFMessage">Read multi-record NDEF message.</string>
-    <string name="readEmptyMessage">Read empty message.</string>
-    <string name="readNonNDEFMessage">Read non-NDEF message.</string>
-    <string name="readUnparsableNDEFMessage">Read NDEF message but was unable to parse.</string>
+    <string name="readSingleRecordNDEFMessage">Read irrelevant single-record NDEF message.</string>
+    <string name="readMultipleRecordNDEFMessage">Read irrelevant multi-record NDEF message.</string>
+    <string name="readEmptyMessage">Read irrelevant empty message.</string>
+    <string name="readNonNDEFMessage">Read irrelevant non-NDEF message.</string>
+    <string name="readUnparsableNDEFMessage">Read irrelevant NDEF message but was unable to parse.</string>
+    <string name="readRSMNDEFMessage">Read from valid RSM device.</string>
+
+
+    <string name="tagNotWritable">Tag is not writable.</string>
+    <string name="ndefWriteFailed">Write tag failed: %s</string>
+    <string name="ndefWriteSuccess">Write tag successful.</string>
+
+    <string name="wroteUnformattedTag">Wrote unfromatted tag.</string>
+    <string name="wroteFormattedTag">Wrote formatted tag.</string>
+    <string name="cannotWriteTechMessage">Cannot write tech or unformatted tag.</string>
+    <string name="tagTooSmallMessage">Message size %1$d bytes exceeds tag capacity of %2$d bytes.</string>
+
 
     <string name="tagLost">Tag lost</string>
+    <string name="title_activity_nfcwrite">NFCWriteActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string-array name="stimulationWidths">
+        <item>20</item>
+        <item>30</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+    </string-array>
 
 </resources>

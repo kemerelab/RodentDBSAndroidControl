@@ -11,6 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/com.android.support" />
+            <option value="$PROJECT_DIR$/com.android.support/appcompat-v7" />
+            <option value="$PROJECT_DIR$/com.android.support/appcompat-v7/22.2.1" />
             <option value="$PROJECT_DIR$/ndeftools" />
             <option value="$PROJECT_DIR$/ndeftoolsutil" />
           </set>
